@@ -1,0 +1,12 @@
+form_name: 'lotr_form.xlsx'
+website: 'https://form.teddiursa.net'
+list_term: 'Company'
+terms:
+  - 'fname': 'First'
+  - 'lname': 'Last'
+  - 'email': 'Email'
+  - 'company': 'Company'
+  - 'address': 'Address'
+  - 'city': 'City'
+  - 'state': 'State'
+  - 'phone': 'Phone'
