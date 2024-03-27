@@ -1,0 +1,22 @@
+---
+
+# form_name: name of excel sheet in .py's directory
+# website: website to fill form in
+# list_term: header to fill searchable list with
+# terms: all header terms, with the 'key' being the form box's id
+# last_term: last term to select, which can be filled with desired text
+
+form_name: 'lotr_form.xlsx'
+website: 'https://form.teddiursa.net'
+list_term: 'Company'
+terms:
+  - 'fname': 'First'
+  - 'lname': 'Last'
+  - 'email': 'not_email'
+  - 'company': 'Company'
+  - 'address': 'Address'
+  - 'city': 'City'
+  - 'state': 'State'
+  - 'phone': 'Phone'
+last_form: 'notes'
+user: 'greg'
