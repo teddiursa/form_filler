@@ -4,7 +4,7 @@
 This python script takes in input from an excel file, creates a searchable list of terms, and automatically fills in a webpage form using information from the excel file. It uses a config.yml file to dynamically specify the terms and forms boxes to fill. It also allows for other variables to be easily modified, such as the file name, website, searchable term, and username.
 
 <div style="text-align:center">
-	<img src="(https://imgur.com/1eHpdZx.gif)">
+	<img src="https://imgur.com/1eHpdZx">
 </div>
 
 ## Configuration via config.yml
