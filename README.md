@@ -13,7 +13,6 @@ The config.yml file allows for easier configurability for different website form
 terms:
 
 - 'first box id': 'first name'
-
 - 'second box id': 'last name'
 
 ```
