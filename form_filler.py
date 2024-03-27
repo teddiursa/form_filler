@@ -5,6 +5,7 @@ import pandas as pd
 import yaml
 import tkinter as tk
 import requests
+import sys
 
 
 from datetime import datetime
@@ -12,14 +13,6 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import WebDriverException
-
-
-# Display selected item in console
-def on_select(event):
-    # display element selected on list
-    print('(event) previous:', event.widget.get('active'))
-    print('(event)  current:', event.widget.get(event.widget.curselection()))
-    print('---')
 
 
 # Find row of the search string
@@ -92,19 +85,22 @@ def fill(event, data, listbox, config):
                 # Given an id and term name, fill in form from excel sheet
                 try:
                     tmp = driver.find_element('id', f"{key}")
-                    tmp.send_keys(data.loc[row, f"{value}"])
+                    try:
+                        tmp.send_keys(data.loc[row, f"{value}"])
+                    except Exception:
+                        print('Header: ' + f"{value}" + ' not found in form')
                 except Exception:
-                    print('id: ' + f"{key}" + ' not found in form')
+                    print('id: ' + f"{key}" + ' not found in webpage')
 
         # Fill in notes
         if last_form:
             try:
                 tmp = driver.find_element('id', last_form)
+                tmp.send_keys(datetime.today().strftime('%Y-%m-%d') + '\n')
+                if user:
+                    tmp.send_keys(user + '\n')
             except Exception:
                 print('id: ' + last_form + ' not found in form')
-
-            tmp.send_keys(datetime.today().strftime('%Y-%m-%d') + '\n')
-            tmp.send_keys(user + '\n')
 
     except WebDriverException:
         print("Browser window was closed. Cleaning up...")
@@ -155,8 +151,8 @@ def main():
     # Load the config
     config = load_config(yml_file_path)
     if config is None:
-        # Handle error (e.g., exit the program)
-        pass
+        print('Unable to read file' + yml_file_name + ' at ' + current_dir)
+        sys.exit()
 
     # Get the values from the config
     form_name = get_config_value(config, 'form_name')
@@ -168,32 +164,37 @@ def main():
     # Read the .xlsx file
     data = read_excel_file(form_file_path)
     if data is None:
-        # Handle error (e.g., exit the program)
-        pass
+        print('Unable to read file: ' + form_name + ' at ' + current_dir)
+        sys.exit()
 
     # Get list of company names using list_term from .yml
     list = get_list(data, list_term)
+    if list is None:
+        print('Unable to find header: ' + list_term + ' in file:' + form_name)
+        sys.exit()
 
     # Create the root window
     root = tk.Tk()
     # Set the background color of the root window
     root.configure(bg='dimgray')
 
+    # Disable resizing the GUI
+    root.resizable(0, 0)
     # Create an Entry widget (a text input field)
-    entry = tk.Entry(root, bg='black', fg='white')
+    entry = tk.Entry(root, bg='black', fg='white', width=25,
+                     font=('Josef Sans', '12'))
     # Pack the Entry widget to make it visible
     entry.pack()
     # Bind the KeyRelease event to the on_keyrelease function
     entry.bind('<KeyRelease>', on_keyrelease)
 
     # Create a Listbox widget (a list of selectable text items)
-    listbox = tk.Listbox(root, bg='black', fg='white')
+    listbox = tk.Listbox(root, bg='black', fg='white', width=25, height=15,
+                         font=('Josef Sans', '12'))
     # Pack the Listbox widget to make it visible
     listbox.pack()
     # Add title
     root.title('Form Filler')
-    # Bind the ListboxSelect event to the on_select function
-    listbox.bind('<<ListboxSelect>>', on_select)
     # Update the Listbox widget with the list of items
     listbox_update(list, listbox)
 

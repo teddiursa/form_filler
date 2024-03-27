@@ -7,7 +7,7 @@
 # last_term: last term to select, which can be filled with desired text
 
 form_name: 'lotr_form.xlsx'
-website: 'http://0.0.0.0'
+website: 'https://form.teddiursa.net'
 list_term: 'Company'
 terms:
   - 'fname': 'First'

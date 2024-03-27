@@ -12,6 +12,7 @@ def test_load_config():
     with open("empty.yml", "w") as f:
         f.write("")
     assert load_config("empty.yml") is None
+    # Remove empty.yml
     os.remove("empty.yml")
 
 
@@ -22,11 +23,12 @@ def test_get_config_value():
     assert get_config_value(config, "missing_key") is None
 
 
+# Test with a missing Excel file
 def test_read_excel_file():
-    # Test with a missing Excel file
     assert read_excel_file("missing_file.xlsx") is None
 
 
+# Test getting proper values from Excel file
 def test_get_list():
     data = pd.DataFrame({"column1": ["value1", "value2"]})
     assert get_list(data, "column1").equals(data["column1"])
