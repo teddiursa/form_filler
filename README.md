@@ -68,6 +68,7 @@ The structure is in [yaml](https://en.wikipedia.org/wiki/YAML) format which mean
 To find the headers of this excel file:
 
 ![excel file image](demo_files/excel.png)
+
 The excel headers are the top row, which would be:
 - Company
 - First
