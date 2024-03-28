@@ -60,7 +60,13 @@ def get_list(data, list_term):
 def fill(event, data, listbox, config):
     # Load values from config.yml
     website = get_config_value(config, 'website')
+    if website is None:
+        print('No website found in configuration file')
+        sys.exit()
     terms = get_config_value(config, 'terms')
+    if terms is None:
+        print('No terms list found in configuration file')
+        sys.exit()
     last_form = get_config_value(config, 'last_form')
     user = get_config_value(config, 'user')
     # Get the selected item
