@@ -66,6 +66,7 @@ The structure is in [yaml](https://en.wikipedia.org/wiki/YAML) format which mean
 
 ### Sample Configuration
 To find the headers of this excel file:
+
 ![excel file image](demo_files/excel.png)
 The excel headers are the top row, which would be:
 - Company
@@ -78,13 +79,17 @@ To find the HTML ids:
 - Right-click on the form box you're interested in and select "Inspect" or "Inspect Element". This will open the Developer Tools pane, with the HTML for the selected form element highlighted.
 - In the Developer Tools pane, look for the `id` attribute within the highlighted HTML tag. The value of the `id` attribute the value set in `config.yml`
 - Repeat for other desired form boxes.
+
 For example:
+
 ![website html image](demo_files/html_id.png)
-The id for the "Company" box is `company`
+The id for the "Company" box is `company`.
+
 The other ids are:
 - `fname`
 - `lname`
 - `address`
+
 So the `config.yml` terms would be:
 ```
 terms:
@@ -104,7 +109,7 @@ I used pytests to test for proper handling of any issues in `config.yml`, the ex
 
 - `test_load_config()` tests for a missing or empty config file.
 - `test_get_config_value()` tests for elements not found in `config.yml`.
-- `test_read_excel_fill()`* tests for a missing excel file.
+- `test_read_excel_fill()` tests for a missing excel file.
 - `test_get_list()` tests that proper values are returned.
 
   
@@ -134,10 +139,11 @@ I wrote an [ansible play](https://github.com/teddiursa/ansible_scripts/blob/main
  website: 'http://192.168.0.84'
  ```
 
-![Website image](demo_files/website.png)
 
 My test website's form boxes have aptly named ids, such as 'fname' for the first name input box, which is less common for public website forms. The terms list in `config.yml` should ease the configuration of these ids.
 
 Since it uses the HTML ids to keep track of the form boxes, it should scale seamlessly with much more complicated websites.
 
 I also added some CSS to have my website display as 'Dark Mode'. This unnecessary for the program's functionality, but is a personal preference.
+
+![Website image](demo_files/website.png)
