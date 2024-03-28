@@ -1,12 +1,41 @@
 #!/usr/bin/env python3
 
+# Gregory Chow, greg.choww@gmail.com
+# This program takes in a config.yml file, creates a searchable list with the
+# "list_term" and the excel_file
+# On Double Clicking a term it opens a specified webpage and fills in a form
+# using terms from config.yml, a key-value list of HTML IDs and Excel Headers
+
+# find_row():
+# Finds the row number of a string in the excel file or returns None
+
+# load_config():
+# Opens the YAML file or returns None and prints an error message
+
+# get_config_value():
+# Returns the value for a specified key or returns None and
+# prints an error message
+
+# read_excel_file():
+# Opens an excel file or returns None and prints an error message
+
+# fill():
+# Check if the specified website returns an HTML OK message,
+# else it fails and prints an error.
+# Then it goes through the terms list and begins seaching the excel file
+# for the header and the webpage for the HTML ID. It prints an error if not
+# found and goes to the next term.
+# If a term is found in excel file and webpage, it fills the webpage form with
+# the text in the excel sheet.
+# It then fills in the last form box with the current date and set user,
+# if last_term is set and found.
+
 import os
 import pandas as pd
 import yaml
 import tkinter as tk
 import requests
 import sys
-
 
 from datetime import datetime
 

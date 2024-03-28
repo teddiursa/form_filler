@@ -1,10 +1,11 @@
 ---
 
-# form_name: name of excel sheet in .py's directory
-# website: website to fill form in
-# list_term: header to fill searchable list with
-# terms: all header terms, with the 'key' being the form box's id
-# last_term: last term to select, which can be filled with desired text
+# form_name: Name of excel sheet in current directory
+# website: Website URL to fill form in, including http(s)://
+# list_term: Header to fill searchable list with
+# terms: All header terms, with the 'key' being the form box's HTML id and the 'value' being the Excel Header
+# last_term: Optional last term to select, which can be filled with desired text
+# user: Optional user to fill last_term form with
 
 form_name: 'lotr_form.xlsx'
 website: 'https://form.teddiursa.net'
