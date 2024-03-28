@@ -156,8 +156,13 @@ def main():
 
     # Get the values from the config
     form_name = get_config_value(config, 'form_name')
+    if form_name is None:
+        print('No form_name found in' + yml_file_name)
+        sys.exit()
     list_term = get_config_value(config, 'list_term')
-
+    if list_term is None:
+        print('No list_term found in' + yml_file_name)
+        sys.exit()
     # Create the full file path for the .xlsx file
     form_file_path = os.path.join(current_dir, form_name)
 
