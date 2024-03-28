@@ -19,6 +19,12 @@
 # read_excel_file():
 # Opens an excel file or returns None and prints an error message
 
+# input_text():
+# Checks if text length exceeds maxlength of html object.
+# If no maxlength is found, set to default value of 524288
+# If it does, truncate and print a message.
+# Either way, fill in the html object with text.
+
 # fill():
 # Check if the specified website returns an HTML OK message,
 # else it fails and prints an error.
@@ -85,6 +91,21 @@ def get_list(data, list_term):
         return None
 
 
+def input_text(html, text):
+    try:
+        max_length = int(html.get_attribute("maxlength"))
+    # If none is found, set to Default value
+    except Exception:
+        max_length = 524288
+    # Ensure inputed text isn't over set maxlength, else truncate
+    if len(text) > max_length:
+        error_text = text[:20]
+        print('truncated text: ' + error_text)
+        text = text[:max_length]
+    html.send_keys(text)
+    return True
+
+
 # Main form filling function
 def fill(event, data, listbox, config):
     # Load values from config.yml
@@ -121,7 +142,7 @@ def fill(event, data, listbox, config):
                 try:
                     tmp = driver.find_element('id', f"{key}")
                     try:
-                        tmp.send_keys(data.loc[row, f"{value}"])
+                        input_text(tmp, data.loc[row, f"{value}"])
                     except Exception:
                         print('Header: ' + f"{value}" + ' not found in form')
                 except Exception:
@@ -132,10 +153,10 @@ def fill(event, data, listbox, config):
             try:
                 tmp = driver.find_element('id', last_form)
                 tmp.send_keys(datetime.today().strftime('%Y-%m-%d') + '\n')
-                if user:
-                    tmp.send_keys(user + '\n')
+                if user is not None:
+                    input_text(tmp, user + '\n')
             except Exception:
-                print('id: ' + last_form + ' not found in form')
+                print('id: ' + last_form + ' not found in webpage')
 
     except WebDriverException:
         print("Browser window was closed. Cleaning up...")
