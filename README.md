@@ -1,7 +1,19 @@
 
 # A Form Filling Python Script
 
-This python script takes in input from an excel file, creates a searchable list of terms, and automatically fills in a webpage form using information from the excel file. It uses a `config.yml` file to dynamically specify the terms and forms boxes to fill. It also allows for other variables to be easily modified, such as the file name, website, searchable term, and user.
+This python script takes in input from an excel file, creates a searchable list of terms, and automatically fills in a webpage. This Python script automates the process of filling out web forms by leveraging data from an Excel file.
+
+- **Data Input**:
+    - Reads input from an Excel file.
+    - Creates a searchable list of terms.
+
+- **Web Form Automation**:
+    - Automatically fills in a webpage form using data from the Excel file.
+
+- **Dynamic Configuration**:
+    - Utilizes `config.yml` to specify terms and form fields.
+    - Easily modify variables such as file names, website URLs, searchable terms, and user details.
+
 
 ![Demo video](demo_files/form_filler.gif)
 
