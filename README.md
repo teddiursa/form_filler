@@ -15,7 +15,7 @@ This python script takes in input from an excel file, creates a searchable list 
     - Easily modify variables such as file names, website URLs, searchable terms, and user details.
 
 
-![Demo video](demo_files/form_filler.gif)
+![Demo video](demo_files/form_filler.webp)
 
 
 ## Installation Instructions
