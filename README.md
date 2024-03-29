@@ -159,4 +159,5 @@ Since it uses the HTML ids to keep track of the form boxes, it should scale seam
 
 I also added some CSS to have my website display as 'Dark Mode'. This unnecessary for the program's functionality, but is a personal preference.
 
-![Website image](demo_files/website.png)
+## Flow Chart
+![Flowchart image](demo_files/form_filler.svg)
