@@ -39,7 +39,9 @@ Before running the script, make sure you have configured the `config.yml` file t
 -  The `config.yml` file is used to specify the website, excel file, terms and form boxes to fill. The key is the HTML id of the form input and the value is the excel header. Make sure these match exactly with your website and excel file as they are **case-sensitive**. See [configuration instructions](#Configuration-via-config.yml) for more detail.
 
 - After configuring `config.yml` file, you can run the script in it's containing directory with:
- `python form_filler.py`
+ ```bash
+ python form_filler.py
+ ```
 
 This will create a window with a searchable and scrollable list of terms from your excel file.
 
