@@ -38,20 +38,20 @@ Before running the script, make sure you have configured the `config.yml` file t
 
 -  The `config.yml` file is used to specify the website, excel file, terms and form boxes to fill. The key is the HTML id of the form input and the value is the excel header. Make sure these match exactly with your website and excel file as they are **case-sensitive**. See [configuration instructions](#Configuration-via-config.yml) for more detail.
 
-- After configuring `config.yml` file, you can run the script in it's containing directory with:
+- After configuring `config.yml` file, run the script in it's directory with:
  ```bash
  python form_filler.py
  ```
 
 This will create a window with a searchable and scrollable list of terms from your excel file.
 
-4. **Select a term:** Browse or search through the list and double-click on a term. This will automatically fill out the form on the configured website using the information from the excel file corresponding to the selected term.
+- **Select a term:** Browse or search through the list and double-click on a term. This will automatically fill out the form on the configured website using the information from the excel file corresponding to the selected term.
 
 ## Configuration via config.yml
 
   
 
-`config.yml` allows for easier configurability for different website forms and excel sheets. The most important component is an unordered list of key-value pairs.
+`config.yml` allows for easier configurability for different website forms and excel sheets. The most important component is an unordered list of key-value pairs:
 
   
 ```
@@ -60,13 +60,11 @@ terms:
 - 'second box id': 'Last'
 ```
   
-Where the **key** is the **HTML id** of the form input and the **value** is the **excel header**.
+Where the **key** is the **HTML id** of the form input and the **value** is the **excel header** of the corresponding column.
 
 **Note:** The id and header are **case-sensitive**
 
-
-
-This list can be **any** number of terms to allow easier configurability for different forms and excel files. While it includes the `list_term` in my example, it's not a requirement.
+This list can be **any** number of terms to enable compatibility with different forms and excel files. While it includes the `list_term` in my example, it's not a requirement.
 
 ### Other Configuration Terms
 - `list_term` is the term used to create a searchable list, in my example it is Company Name.
@@ -157,9 +155,7 @@ I wrote an [ansible play](https://github.com/teddiursa/ansible_scripts/blob/main
 
 My test website's form boxes have aptly named ids, such as 'fname' for the first name input box, which is less common for public website forms. The terms list in `config.yml` should ease the configuration of these ids.
 
-Since it uses the HTML ids to keep track of the form boxes, it should scale seamlessly with much more complicated websites.
-
-I also added some CSS to have my website display as 'Dark Mode'. This unnecessary for the program's functionality, but is a personal preference.
+Since it uses the HTML ids to keep track of the form boxes, it should scale seamlessly with more complex websites.
 
 ## Flow Chart
 ![Flowchart image](demo_files/form_filler.svg)
